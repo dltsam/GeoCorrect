@@ -1,17 +1,17 @@
 
-%UNTITLED ´Ë´¦ÏÔÊ¾ÓĞ¹Ø´Ëº¯ÊıµÄÕªÒª
-%   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
-[x,y,X,Y]=textread("¿ØÖÆµã.txt",'%f %f %f %f');
+%UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤å‡½æ•°çš„æ‘˜è¦
+%   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜
+[x,y,X,Y]=textread("çº æ­£ç‚¹.txt",'%f %f %f %f');
 [m,n]=size(x);
-%ÏµÊı¾ØÕó
+%ç³»æ•°çŸ©é˜µ
 A=[ones(m,1),X,Y];
 B=[ones(m,1),x,y];
-%¼ÆËã¶àÏîÊ½ÏµÊı
+%è®¡ç®—å¤šé¡¹å¼ç³»æ•°
 Da=((A'*A)^-1)*A'*x;
 Db=((A'*A)^-1)*A'*y;
 Da_1=((B'*B)^-1)*B'*X;
 Db_1=((B'*B)^-1)*B'*Y;
-img=imread("´ı¾ÀÕıÍ¼Ïñ.bmp");
+img=imread("å¾…çº æ­£å›¾åƒ.bmp");
 [m,n,~]=size(img);
 X1=Da_1'*[1;0;0];
 X2=Da_1'*[1;0;m];
@@ -52,11 +52,8 @@ for a=1:M
 end
 img2=uint8(img2);   
 img=uint8(img);
-imwrite(img2,'¾ÀÕıÍ¼Ïñ.bmp');
-img1=imread('²Î¿¼Í¼Ïñ.bmp');
-subplot(1,3,1);imshow(img);title('Ô´Í¼Ïñ');
-subplot(1,3,2);imshow(img1);title('²Î¿¼Í¼Ïñ');
-subplot(1,3,3);imshow(img2);title('¾ÀÕıÍ¼Ïñ');
+imwrite(img2,'çº æ­£å›¾åƒ.bmp');
+subplot(1,3,3);imshow(img2);title('123');
 
     
 %plot(x,y,'o');
