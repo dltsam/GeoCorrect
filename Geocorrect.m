@@ -31,3 +31,28 @@ Ymax=max(Y);
 Ymin=min(Y);
 M=ceil(Ymax-Ymin)+1;
 N=ceil(Xmax-Xmin)+1;
+img=double(img);
+for a=1:M
+    for b=1:N
+        Xp=Xmin+(b-1);
+        Yp=Ymin+(a-1);
+        %间接法求x y
+        xp=Da'*[1;Xp;Yp];
+        yp=Db'*[1;Xp;Yp];
+        %最邻近重采样
+        i=ceil(xp+0.5);
+        j=ceil(yp+0.5);  
+        for k=1:3
+            if i>1&&i<n&&j>1&&j<m
+                if rem(yp,1)~=0 && rem(xp,1)~=0
+                    p=img(j,i,k);
+                end
+            else
+                p=0;
+            end
+            img2(a,b,k)=p;
+        end         
+    end
+end
+img2=uint8(img2); 
+subplot(1,1,1);imshow(img1);title('参考图像');
